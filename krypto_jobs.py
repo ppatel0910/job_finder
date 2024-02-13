@@ -36,15 +36,12 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 # and pass it your Ethereum `account.address`.
 
 ################################################################################
-# Step 1 
+# Step 1 - Part 1
 # Import the following functions from the `crypto_wallet.py` file:
 # * `generate_account`
 # * `get_balance`
 # * `send_transaction`
 
-# @TODO:
-# From `crypto_wallet.py import the functions generate_account, get_balance,
-#  and send_transaction
 from crypto_wallet import generate_account, get_balance, send_transaction
 
 ################################################################################
@@ -114,13 +111,11 @@ st.text(" \n")
 st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 
 ##########################################
-# Step 1 - Part 4:
+# Step 1 - Part 2:
 # Create a variable named `account`. Set this variable equal to a call on the
 # `generate_account` function. This function will create the KryptoJobs2Go
 # customer's (in this case, your) HD wallet and Ethereum account.
 
-# @TODO:
-#  Call the `generate_account` function and save it as the variable `account`
 account = generate_account()
 
 ##########################################
@@ -129,14 +124,11 @@ account = generate_account()
 st.sidebar.write(account.address)
 
 ##########################################
-# Step 1 - Part 5:
+# Step 1 - Part 3:
 # Define a new `st.sidebar.write` function that will display the balance of the
 # customer's account. Inside this function, call the `get_balance` function and
 #  pass it your Ethereum `account.address`.
 
-# @TODO
-# Call `get_balance` function and pass it your account address
-# Write the returned ether balance to the sidebar
 st.sidebar.write(get_balance(w3, account.address))
 
 ##########################################
@@ -175,63 +167,19 @@ st.sidebar.markdown("## Total Wage in Ether")
 # Step 2: Sign and Execute a Payment Transaction
 
 # Complete the following steps:
+#########################################
 
-# 1. KryptoJobs2Go customers will select a fintech professional from the
-# application interface's drop-down menu, and then input the amount of time for
-# which they'll hire the worker. Code the application so that once a customer
-# completes these steps, the application will calculate the amount that the
-# worker will be paid in ether. To do so, complete the following steps:
-
-# * Write the equation that calculates the candidate's wage. This equation
-#  should assess the candidate's hourly rate from the candidate database
-# (`candidate_database[person][3]`) and then multiply this hourly rate by
-# the value of the `hours` variable. Save this calculation's output as a
-# variable named `wage`.
-
-# * Write the `wage` variable to the Streamlit sidebar by
-# using `st.sidebar.write`.
-
-# 2. Now that the application can calculate a candidate's wage, write the code
-# that will allow a customer (you, in this case) to send an Ethereum blockchain
-# transaction that pays the hired candidate. To accomplish this, locate the
-# code that reads `if st.sidebar.button("Send Transaction")`. You'll need to
-# add logic to this `if` statement that sends the appropriate information to
-# the `send_transaction` function (which you imported from the `crypto_wallet`
-# script file). Inside the `if` statement, add the following functionality:
-
-# * Call the `send_transaction()` function and pass it three parameters:
-# - Your Ethereum `account` information. (Remember that this `account`
-# instance was created when the `generate_account` function was called.)
-#  From the `account` instance, the application will be able to access the
-#  `account.address` information that is needed to populate the `from` data
-# attribute in the raw transaction.
-# - The `candidate_address` (which will be created and identified in the
-# sidebar when a customer selects a candidate). This will populate the `to`
-# data attribute in the raw transaction.
-# - The `wage` value. This will be passed to the `toWei` function to
-# determine the wei value of the payment in the raw transaction.
-
-# * Save the transaction hash that the `send_transaction` function returns
-# as a variable named `transaction_hash`, and have it display on the
-# application's web interface.
-
-##########################################
 # Step 2 - Part 1:
 # * Write the equation that calculates the candidate's wage. This equation
 # should assess the candidate's hourly rate from the candidate database
 # (`candidate_database[person][3]`) and then multiply this hourly rate by
 # the value of the `hours` variable. Save this calculation's output as a
 # variable named `wage`.
-# * Write the `wage` variable to the Streamlit sidebar by using `st.sidebar.write`.
 
-# @TODO
-# Calculate total `wage` for the candidate by multiplying the candidate's hourly
-# rate from the candidate database (`candidate_database[person][3]`) by the
-# value of the `hours` variable
 wage = candidate_database[person][3] * hours
 
-# @TODO
-# Write the `wage` calculation to the Streamlit sidebar
+# Streamlit Code
+
 st.sidebar.write(wage)
 
 ##########################################
@@ -248,17 +196,8 @@ st.sidebar.write(wage)
 # - The `wage` value. This will be passed to the `toWei` function to
 # determine the wei value of the payment in the raw transaction.
 
-# * Save the transaction hash that the `send_transaction` function returns as a
-# variable named `transaction_hash`, and have it display on the application's
-# web interface.
-
-
 if st.sidebar.button("Send Transaction"):
 
-    # @TODO
-    # Call the send_transaction() function and pass it 3 parameters:
-    # Your `account`, the `candidate_address`, and the `wage` as parameters
-    # Save the returned transaction hash as a variable named `transaction_hash`
     transaction_hash = send_transaction(w3, account, candidate_address, wage)
 
     # Markdown for the transaction hash

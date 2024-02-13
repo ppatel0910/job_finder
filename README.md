@@ -18,7 +18,6 @@ Specifically, you will assume the perspective of a KryptoJobs2Go customer in ord
 
 * Review the transaction hash code associated with the validated blockchain transaction.
 
-Once you receive the transaction’s hash code, you will navigate to the Transactions section of Ganache to review the blockchain transaction details. To confirm that you have successfully created the transaction, you will save screenshots to the README.md file of your GitHub repository for this Challenge assignment.
 
 ### Results
 Below is an image of the working Streamlit application that was created. 

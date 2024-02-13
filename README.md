@@ -22,4 +22,5 @@ Once you receive the transaction’s hash code, you will navigate to the Transac
 
 ### Results
 Below is an image of the working Streamlit application that was created. 
+
 ![an_image_showing_the_streamlit_application](https://github.com/ppatel0910/job_finder/blob/main/images/streamlit.png)

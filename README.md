@@ -1,4 +1,4 @@
-Cryptocurrency Wallet
+# Cryptocurrency Wallet
 
 ![An image shows a wallet with bitcoin.](https://github.com/ppatel0910/job_finder/blob/main/images/19-4-challenge-image.png)
 
